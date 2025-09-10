@@ -1,7 +1,7 @@
 // ----------------------------
-// Command Interface
+// ICommand Interface
 // ----------------------------
-interface Command {
+interface ICommand {
     void execute();
     void undo();
 }
@@ -28,9 +28,9 @@ class Fan {
 }
 
 // ----------------------------
-// Concrete Command for Light
+// Concrete ICommand for Light
 // ----------------------------
-class LightCommand implements Command {
+class LightCommand implements ICommand {
     private Light light;
 
     public LightCommand(Light l) {
@@ -47,9 +47,9 @@ class LightCommand implements Command {
 }
 
 // ----------------------------
-// Concrete Command for Fan
+// Concrete ICommand for Fan
 // ----------------------------
-class FanCommand implements Command {
+class FanCommand implements ICommand {
     private Fan fan;
 
     public FanCommand(Fan f) {
@@ -70,11 +70,11 @@ class FanCommand implements Command {
 // ----------------------------
 class RemoteController {
     private static final int numButtons = 4;
-    private Command[] buttons;
+    private ICommand[] buttons;
     private boolean[] buttonPressed;
 
     public RemoteController() {
-        buttons = new Command[numButtons];
+        buttons = new ICommand[numButtons];
         buttonPressed = new boolean[numButtons];
         for (int i = 0; i < numButtons; i++) {
             buttons[i] = null;
@@ -82,7 +82,7 @@ class RemoteController {
         }
     }
 
-    public void setCommand(int idx, Command cmd) {
+    public void setCommand(int idx, ICommand cmd) {
         if (idx >= 0 && idx < numButtons) {
             buttons[idx] = cmd;
             buttonPressed[idx] = false;
