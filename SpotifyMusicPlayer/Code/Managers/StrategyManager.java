@@ -1,7 +1,7 @@
 package SpotifyMusicPlayer.Code.Managers;
 
 import SpotifyMusicPlayer.Code.Enums.PlayStrategyType;
-import SpotifyMusicPlayer.Code.Factories.StrategyFactor;
+import SpotifyMusicPlayer.Code.Factories.StrategyFactory;
 import SpotifyMusicPlayer.Code.Strategies.IPlayStrategy;
 import SpotifyMusicPlayer.Code.Strategies.SequentialPlayStrategy;
 
@@ -21,7 +21,7 @@ public class StrategyManager {
     }
 
     public IPlayStrategy getStrategy(PlayStrategyType type) {
-        playStrategy = StrategyFactor.createStrategy(type);
+        playStrategy = StrategyFactory.createStrategy(type);
         return playStrategy;
     }
 }

@@ -13,22 +13,6 @@ public class CustomQueueStrategy implements IPlayStrategy {
     private Queue<Song> nextQueue;
     private Stack<Song> prevStack;
 
-    private Song nextSequential() {
-        if (currentPlaylist.getSize() == 0) {
-            throw new RuntimeException("Playlist is empty.");
-        }
-        currentIndex = currentIndex + 1;
-        return currentPlaylist.getSongs().get(currentIndex);
-    }
-
-    private Song previousSequential() {
-        if (currentPlaylist.getSize() == 0) {
-            throw new RuntimeException("Playlist is empty.");
-        }
-        currentIndex = currentIndex - 1;
-        return currentPlaylist.getSongs().get(currentIndex);
-    }
-
     public CustomQueueStrategy() {
         currentPlaylist = null;
         currentIndex = -1;
@@ -43,6 +27,25 @@ public class CustomQueueStrategy implements IPlayStrategy {
         nextQueue.clear();
         prevStack.clear();
     }
+    
+    private Song nextSequential() {
+        if (currentPlaylist.getSize() == 0) {
+            throw new RuntimeException("Playlist is empty.");
+        }
+        currentIndex = currentIndex + 1;
+        return currentPlaylist.getSongs().get(currentIndex);
+    }
+
+
+    private Song previousSequential() {
+        if (currentPlaylist.getSize() == 0) {
+            throw new RuntimeException("Playlist is empty.");
+        }
+        currentIndex = currentIndex - 1;
+        return currentPlaylist.getSongs().get(currentIndex);
+    }
+
+
 
     @Override
     public boolean hasNext() {

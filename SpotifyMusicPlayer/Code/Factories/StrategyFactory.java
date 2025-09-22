@@ -6,7 +6,7 @@ import SpotifyMusicPlayer.Code.Strategies.IPlayStrategy;
 import SpotifyMusicPlayer.Code.Strategies.RandomPlayStrategy;
 import SpotifyMusicPlayer.Code.Strategies.SequentialPlayStrategy;
 
-public class StrategyFactor {
+public class StrategyFactory {
     public static IPlayStrategy createStrategy(PlayStrategyType type) {
         switch (type) {
             case RANDOM:
